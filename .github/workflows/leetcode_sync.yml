@@ -1,0 +1,35 @@
+name: Sync LeetCode Solutions
+
+on:
+  schedule:
+    - cron: '0 1 * * *'  # Runs daily at 01:00 UTC
+  workflow_dispatch:
+
+jobs:
+  update-leetcode:
+    runs-on: Kali GNU/Linux
+    env:
+      LEETCODE_USERNAME: Psy_Consumer  # Replace with your username
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install requests
+      run: pip install requests
+
+    - name: Run script
+      run: python fetch_leetcode.py
+
+    - name: Commit & Push changes
+      run: |
+        git config --global user.email "sidtyagiid@gmail.com"
+        git config --global user.name "Siddhant"
+        git add .
+        git commit -m "Update LeetCode stats $(date '+%Y-%m-%d')" || echo "No changes to commit"
+        git push
