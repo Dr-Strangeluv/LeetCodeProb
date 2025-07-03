@@ -1,0 +1,40 @@
+{
+    "data": {
+        "matchedUser": {
+            "submitStats": {
+                "acSubmissionNum": [
+                    {
+                        "difficulty": "All",
+                        "count": 8
+                    },
+                    {
+                        "difficulty": "Easy",
+                        "count": 4
+                    },
+                    {
+                        "difficulty": "Medium",
+                        "count": 4
+                    },
+                    {
+                        "difficulty": "Hard",
+                        "count": 0
+                    }
+                ]
+            },
+            "problemsSolvedBeatsStats": [
+                {
+                    "difficulty": "Easy",
+                    "percentage": null
+                },
+                {
+                    "difficulty": "Medium",
+                    "percentage": 16.61
+                },
+                {
+                    "difficulty": "Hard",
+                    "percentage": null
+                }
+            ]
+        }
+    }
+}
