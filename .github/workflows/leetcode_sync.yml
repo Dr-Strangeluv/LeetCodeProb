@@ -1,15 +1,20 @@
 name: Sync LeetCode Solutions
 
+# give the job permission to push back to the repo
+permissions:
+  contents: write        # ←‑‑ add this line
+
 on:
   schedule:
-    - cron: '0 1 * * *'  # Runs daily at 01:00 UTC
-  workflow_dispatch:
+    - cron: '0 1 * * *'  # daily at 01:00 UTC
+  workflow_dispatch:      # manual trigger
 
 jobs:
   update-leetcode:
-    runs-on: Kali GNU/Linux
+    runs-on: ubuntu-latest        # ←‑‑ change this
+
     env:
-      LEETCODE_USERNAME: Psy_Consumer  # Replace with your username
+      LEETCODE_USERNAME: Psy_Consumer
 
     steps:
     - name: Checkout repo
@@ -26,10 +31,10 @@ jobs:
     - name: Run script
       run: python fetch_leetcode.py
 
-    - name: Commit & Push changes
+    - name: Commit & push changes
       run: |
         git config --global user.email "sidtyagiid@gmail.com"
-        git config --global user.name "Siddhant"
+        git config --global user.name  "Siddhant"
         git add .
         git commit -m "Update LeetCode stats $(date '+%Y-%m-%d')" || echo "No changes to commit"
         git push
